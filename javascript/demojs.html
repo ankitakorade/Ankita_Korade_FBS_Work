@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        function factorial()
+        {
+
+            no=parseInt(document.getElementById("fact").value)
+            fact=1
+            for(i=1;i<=no;i++)
+        {
+            fact=fact*i;
+        }
+
+          console.log(fact)
+        }
+        function calci(op)
+         
+         if(op=='+')
+            res=no1+no2
+        else if(op=='-')
+            res=no1-no2
+        else if(op=='*')
+            res=no1*no2
+        else
+            res=no1/no2
+
+        function addition()
+        {
+
+            inp1=document.getElementById("inp1");
+            inp2=document.getElementById("inp2");
+            no1=inp1.value;
+            no2=inp2.value;
+
+            res=no1+no2
+            console.log("Result is"+res)
+        }
+        function substraction()
+        {
+
+            inp1=document.getElementById("inp1");
+            inp2=document.getElementById("inp2");
+            no1=inp1.value;
+            no2=inp2.value;
+
+            sub=no1+no2
+            console.log("Result is"+res)
+        }
+        function multiplication()
+        {
+
+            inp1=document.getElementById("inp1");
+            inp2=document.getElementById("inp2");
+            no1=inp1.value;
+            no2=inp2.value;
+
+            mul=no1+no2
+            console.log("Result is"+res)
+            document.getElementById('fact').ineerHTML="the fact"+no+"is"+fact
+        }
+    
+
+
+        </script>
+</head>
+<body>
+    <input type="text" id="inp1">
+    <br>
+   <input ype="text" id="inp2">
+
+    <button onclick="addition()">Add</button>
+    <br>
+    <button onclick="substraction()">Substract</button>
+    <br>
+    <button onclick="fact()">Factorial</button>
+    <br>
+    <span id="res">Output will be display here</span>
+    
+    
+</body>
+</html>
