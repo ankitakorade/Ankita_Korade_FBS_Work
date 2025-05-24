@@ -1,4 +1,4 @@
-//Check number is perfect or not
+//program to print perfect number in given range
 
 #include<stdio.h>
 int main()
@@ -6,13 +6,14 @@ int main()
 	int i=1,sum=0,num;
 	printf("Enter number which you want= ");
 	scanf("%d",&num);
-	 while(i<num)
+	 
+	 for(i=1;i<num;i++)
      {
 	   if(num%i==0)
-	   sum+=i;
-	}
-     i++;
-     if(sum==num)
+	    sum+=i;
+	
+     }
+      if(sum==num)
       {
         printf("The %d is perfect number\n",num);
       }
