@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=
+    n, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+
+            width:200px;
+            height:200px;
+            margin:20px auto;
+            border:2px solid black;
+            text-align:center;
+            line-height:200px;
+            transition:all 0.3s ease;
+            color: blue;
+            background-color: red;
+         }
+
+         .shadow{
+
+                 box-shadow:5px 5px 15px
+                 rgba(0,0,0,0.5)
+         }
+         .color{
+
+
+                   font-family:'Courier New',
+                   Courier,monospace;
+                   font-size:20px;
+                   font-weight:bold;
+
+         }
+        </style>
+
+</head>
+<body>
+  <div class="box" id="myBox">My BOx</div>
+  <div style="text-align:center";>
+    <label><input type="checkbox" id="shadowBox">Shadow</label><br>
+    <label><input type="checkbox" id="colorbox">Color</label><br>
+    <label><input type="checkbox" id="fontbox">Fontbox</label><br>
+ </div>
+ <script>
+    const box=document.getElementById("myBox");
+    document.getElementById("shadowBox").addEvenbtListener("change",function()
+    {
+       box.classlist.toggle(shadow,this.checked);
+     });
+
+     document.getElementById("colorBox").addEvenbtListener("change",function()
+     {
+        box.classList.toggle("color",this.checked);
+
+     });
+
+     document.getElementById("fontbox").addEvenbtListener("change",function()
+     {
+         box.classList.toggle("font",this.checked);
+
+     });
+     </script>
+
+</body>
+
+</html>
