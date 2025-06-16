@@ -1,0 +1,239 @@
+      Assignment NO.2
+
+Q.2
+   mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| capgemini          |
+| college            |
+| hotelmanagement    |
+| information_schema |
+| marchfebmerged     |
+| mysql              |
+| performance_schema |
+| sys                |
+| temp1              |
+| worker             |
++--------------------+
+10 rows in set (0.02 sec)
+
+mysql> use college;
+Database changed
+
+mysql> insert into department values(10,"Administration",200,1700),
+    -> (20,"Marketing",201,1800),
+    -> (30,"Purchasing",114,1700),
+    -> (40,"Human Resources",203,2400),
+    -> (50,"Shipping",121,1500),
+    -> (60,"IT",103,1400),
+    -> (70,"Public Realtions",204,2700),
+    -> (80,"Sales",145,2500);
+Query OK, 8 rows affected (0.01 sec)
+Records: 8  Duplicates: 0  Warnings: 0
+
+mysql> select * from department;
++---------------+------------------+------------+-------------+
+| department_id | department_name  | manager_id | location_id |
++---------------+------------------+------------+-------------+
+|            10 | Administration   |        200 |        1700 |
+|            20 | Marketing        |        201 |        1800 |
+|            30 | Purchasing       |        114 |        1700 |
+|            40 | Human Resources  |        203 |        2400 |
+|            50 | Shipping         |        121 |        1500 |
+|            60 | IT               |        103 |        1400 |
+|            70 | Public Realtions |        204 |        2700 |
+|            80 | Sales            |        145 |        2500 |
++---------------+------------------+------------+-------------+
+8 rows in set (0.00 sec)
+
+mysql> insert into department values(90,"Nursing",207,3000),(100,"Teacher",150,3500),(110,"Police",155,400);
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from department;
++---------------+------------------+------------+-------------+
+| department_id | department_name  | manager_id | location_id |
++---------------+------------------+------------+-------------+
+|            10 | Administration   |        200 |        1700 |
+|            20 | Marketing        |        201 |        1800 |
+|            30 | Purchasing       |        114 |        1700 |
+|            40 | Human Resources  |        203 |        2400 |
+|            50 | Shipping         |        121 |        1500 |
+|            60 | IT               |        103 |        1400 |
+|            70 | Public Realtions |        204 |        2700 |
+|            80 | Sales            |        145 |        2500 |
+|            90 | Nursing          |        207 |        3000 |
+|           100 | Teacher          |        150 |        3500 |
+|           110 | Police           |        155 |         400 |
++---------------+------------------+------------+-------------+
+11 rows in set (0.00 sec)
+
+Q.3
+    
+mysql> insert into jobs values("AD_PRES","President",20000,40000),
+    -> ("AD_VP","Administraion Vice President",15000,30000),
+    -> ("AD_ASST","ADMINistration Assistant",3000,6000),
+    -> ("FI_MGR","Finanace Manager",8200,16000),
+    -> ("FI_ACCOUNT","Accountant",4200,9000),
+    -> ("AI_MGR","Accounting Manager",8200,16000),
+    -> ("AC_ACCOUNT","Public Accountant",4200,9000),
+    -> ("SA_MAN","SalesManager",10000,20000);
+Query OK, 8 rows affected (0.01 sec)
+Records: 8  Duplicates: 0  Warnings: 0
+
+ysql> select * from jobs;
++------------+------------------------------+------------+------------+
+| job_id     | job_title                    | min_salary | max_salary |
++------------+------------------------------+------------+------------+
+| AC_ACCOUNT | Public Accountant            |    4200.00 |    9000.00 |
+| AD_ASST    | ADMINistration Assistant     |    3000.00 |    6000.00 |
+| AD_PRES    | President                    |   20000.00 |   40000.00 |
+| AD_VP      | Administraion Vice President |   15000.00 |   30000.00 |
+| AI_MGR     | Accounting Manager           |    8200.00 |   16000.00 |
+| FI_ACCOUNT | Accountant                   |    4200.00 |    9000.00 |
+| FI_MGR     | Finanace Manager             |    8200.00 |   16000.00 |
+| SA_MAN     | SalesManager                 |   10000.00 |   20000.00 |
++------------+------------------------------+------------+------------+
+8 rows in set (0.00 sec)
+
+mysql> insert into jobs values("HR_EXC","HR_Executive",4000,9000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from jobs;
++------------+------------------------------+------------+------------+
+| job_id     | job_title                    | min_salary | max_salary |
++------------+------------------------------+------------+------------+
+| AC_ACCOUNT | Public Accountant            |    4200.00 |    9000.00 |
+| AD_ASST    | ADMINistration Assistant     |    3000.00 |    6000.00 |
+| AD_PRES    | President                    |   20000.00 |   40000.00 |
+| AD_VP      | Administraion Vice President |   15000.00 |   30000.00 |
+| AI_MGR     | Accounting Manager           |    8200.00 |   16000.00 |
+| FI_ACCOUNT | Accountant                   |    4200.00 |    9000.00 |
+| FI_MGR     | Finanace Manager             |    8200.00 |   16000.00 |
+| HR_EXC     | HR_Executive                 |    4000.00 |    9000.00 |
+| SA_MAN     | SalesManager                 |   10000.00 |   20000.00 |
++------------+------------------------------+------------+------------+
+9 rows in set (0.00 sec)
+
+Q.1
+
+mysql> insert into employ values(101,"Neena","Kochhar","NKOCHHAR","515.123.4568","1987-06-18","AD_VP",17000.00,0.00,200,10),
+    -> (102,"Lex","De Haan","LDEHAAN","515.123.4569","1987-06-19","AD_VP",170000.00,0.00,200,10),
+    -> (103,"Alexander","hunold","AHUNOLD","590.423.4367","1987-06-20","IT_PROG",9000.00,0.00,103,60);
+       (104,"Bruce","Ernst","BERNST","590.423.4568","1987-06-21","IT_PROG",6000.00,0.00,103,60);
+     Query OK, 4 row affected (0.00 sec)
+
+mysql> select * from employ;
++-----------+------------+-----------+----------+--------------+------------+---------+-----------+-----------+---------------+------------+
+| employ_id | first_name | last_name | email    | phone_number | hire_date  | jo_id   | salary    | comission | department_id | manager_id |
++-----------+------------+-----------+----------+--------------+------------+---------+-----------+-----------+---------------+------------+
+|       100 | Steven     | King      | SKING    | 515.123.4567 | 1987-06-17 | AD_PRES |  24000.00 |      0.00 |           200 |         10 |
+|       101 | Neena      | Kochhar   | NKOCHHAR | 515.123.4568 | 1987-06-18 | AD_VP   |  17000.00 |      0.00 |           200 |         10 |
+|       102 | Lex        | De Haan   | LDEHAAN  | 515.123.4569 | 1987-06-19 | AD_VP   | 170000.00 |      0.00 |           200 |         10 |
+|       103 | Alexander  | hunold    | AHUNOLD  | 590.423.4367 | 1987-06-20 | IT_PROG |   9000.00 |      0.00 |           103 |         60 |
+|       104 | Bruce      | Ernst     | BERNST   | 590.423.4568 | 1987-06-21 | IT_PROG |   6000.00 |      0.00 |           103 |         60 |
++-----------+------------+-----------+----------+--------------+------------+---------+-----------+-----------+---------------+------------+
+5 rows in set (0.00 sec)
+
+Q.4
+    mysql> update employ
+    -> set salary=salary * 1.10;
+       Query OK, 5 rows affected (0.01 sec)
+       Rows matched: 5  Changed: 5  Warnings: 0
+
+mysql> select * from employ;
++-----------+------------+-----------+----------+--------------+------------+---------+-----------+-----------+---------------+------------+
+| employ_id | first_name | last_name | email    | phone_number | hire_date  | jo_id   | salary    | comission | department_id | manager_id |
++-----------+------------+-----------+----------+--------------+------------+---------+-----------+-----------+---------------+------------+
+|       100 | Steven     | King      | SKING    | 515.123.4567 | 1987-06-17 | AD_PRES |  26400.00 |      0.00 |           200 |         10 |
+|       101 | Neena      | Kochhar   | NKOCHHAR | 515.123.4568 | 1987-06-18 | AD_VP   |  18700.00 |      0.00 |           200 |         10 |
+|       102 | Lex        | De Haan   | LDEHAAN  | 515.123.4569 | 1987-06-19 | AD_VP   | 187000.00 |      0.00 |           200 |         10 |
+|       103 | Alexander  | hunold    | AHUNOLD  | 590.423.4367 | 1987-06-20 | IT_PROG |   9900.00 |      0.00 |           103 |         60 |
+|       104 | Bruce      | Ernst     | BERNST   | 590.423.4568 | 1987-06-21 | IT_PROG |   6600.00 |      0.00 |           103 |         60 |
++-----------+------------+-----------+----------+--------------+------------+---------+-----------+-----------+---------------+------------+
+5 rows in set (0.00 sec)
+
+Q.5
+   mysql> update employ
+    -> set email = "not available"
+    -> where department_id = 80 and comission < 2.0;
+     Query OK, 0 rows affected (0.00 sec)
+     Rows matched: 0  Changed: 0  Warnings: 0
+
+     mysql> select * from employ;
++-----------+------------+-----------+----------+--------------+------------+---------+-----------+-----------+---------------+------------+
+| employ_id | first_name | last_name | email    | phone_number | hire_date  | jo_id   | salary    | comission | department_id | manager_id |
++-----------+------------+-----------+----------+--------------+------------+---------+-----------+-----------+---------------+------------+
+|       100 | Steven     | King      | SKING    | 515.123.4567 | 1987-06-17 | AD_PRES |  26400.00 |      0.00 |           200 |         10 |
+|       101 | Neena      | Kochhar   | NKOCHHAR | 515.123.4568 | 1987-06-18 | AD_VP   |  18700.00 |      0.00 |           200 |         10 |
+|       102 | Lex        | De Haan   | LDEHAAN  | 515.123.4569 | 1987-06-19 | AD_VP   | 187000.00 |      0.00 |           200 |         10 |
+|       103 | Alexander  | hunold    | AHUNOLD  | 590.423.4367 | 1987-06-20 | IT_PROG |   9900.00 |      0.00 |           103 |         60 |
+|       104 | Bruce      | Ernst     | BERNST   | 590.423.4568 | 1987-06-21 | IT_PROG |   6600.00 |      0.00 |           103 |         60 |
++-----------+------------+-----------+----------+--------------+------------+---------+-----------+-----------+---------------+------------+
+5 rows in set (0.00 sec)
+
+Q.6
+
+
+
+
+
+
+     
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
