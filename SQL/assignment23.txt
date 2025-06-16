@@ -1,0 +1,220 @@
+             Assignment No.2
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| capgemini          |
+| college            |
+| hotelmanagement    |
+| information_schema |
+| library_system     |
+| marchfebmerged     |
+| mysql              |
+| performance_schema |
+| sys                |
+| temp1              |
+| worker             |
++--------------------+
+11 rows in set (0.07 sec)
+
+mysql> use library_system;
+Database changed
+
+mysql> desc member;
++-------------------+--------------+------+-----+---------+-------+
+| Field             | Type         | Null | Key | Default | Extra |
++-------------------+--------------+------+-----+---------+-------+
+| member_id         | int          | NO   | PRI | NULL    |       |
+| member_name       | varchar(30)  | YES  |     | NULL    |       |
+| member_adress     | varchar(50)  | YES  |     | NULL    |       |
+| acc_open_date     | date         | YES  |     | NULL    |       |
+| membership_type   | varchar(30)  | YES  |     | NULL    |       |
+| fees_paid         | int          | YES  |     | NULL    |       |
+| max_books_allowed | int          | YES  |     | NULL    |       |
+| penalty_amount    | decimal(7,2) | YES  |     | NULL    |       |
++-------------------+--------------+------+-----+---------+-------+
+8 rows in set (0.02 sec)
+
+ysql> desc books;
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| book_no     | int          | NO   | PRI | NULL    |       |
+| book_name   | varchar(30)  | YES  |     | NULL    |       |
+| author_name | varchar(30)  | YES  |     | NULL    |       |
+| cost        | decimal(7,2) | YES  |     | NULL    |       |
+| category    | char(10)     | YES  |     | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> desc lib_issue;
++--------------+------+------+-----+---------+-------+
+| Field        | Type | Null | Key | Default | Extra |
++--------------+------+------+-----+---------+-------+
+| lib_issue_id | int  | YES  |     | NULL    |       |
+| book_no      | int  | YES  |     | NULL    |       |
+| member_id    | int  | YES  |     | NULL    |       |
+| issue_date   | date | YES  |     | NULL    |       |
+| return_date  | date | YES  |     | NULL    |       |
++--------------+------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+Q.9
+
+   sql> insert into member values(
+    -> 1,"Richa","Pune","2005-12-10","Lifetime",25000,5,50);
+Query OK, 1 row affected (0.07 sec)
+mysql> insert into member values(
+    -> 2,"Garima Sen","Pune","205-06-06","Annual",1000,3,NULL);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from member;
++-----------+-------------+---------------+---------------+-----------------+-----------+-------------------+----------------+
+| member_id | member_name | member_adress | acc_open_date | membership_type | fees_paid | max_books_allowed | penalty_amount |
++-----------+-------------+---------------+---------------+-----------------+-----------+-------------------+----------------+
+|         1 | Richa       | Pune          | 2005-12-10    | Lifetime        |     25000 |                 5 |          50.00 |
+|         2 | Garima Sen  | Pune          | 0205-06-06    | Annual          |      1000 |                 3 |           NULL |
++-----------+-------------+---------------+---------------+-----------------+-----------+-------------------+----------------+
+2 rows in set (0.00 sec)
+
+Q.10
+ 
+
+   mysql> insert into member values(3,"Ankita korade","Mumbai","2025-02-12","Monthly",2000,6,10),
+    -> (4,"sakshi Gore","Pune","2025-12-12","Weekly",3000,7,20),
+    -> (5,"Radha Korade","Delhi","2025-04-13","Annual",4000,8,30),
+    -> (6,"Rutuja Dighe","Pune","2025-11-11","Lifetime",50000,9,40),
+    -> (7,"Sonali Khose","Mumbai","205-11-11","Annual",60000,18,70);
+Query OK, 5 rows affected (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select * from member;
++-----------+---------------+---------------+---------------+-----------------+-----------+-------------------+----------------+
+| member_id | member_name   | member_adress | acc_open_date | membership_type | fees_paid | max_books_allowed | penalty_amount |
++-----------+---------------+---------------+---------------+-----------------+-----------+-------------------+----------------+
+|         1 | Richa         | Pune          | 2005-12-10    | Lifetime        |     25000 |                 5 |          50.00 |
+|         2 | Garima Sen    | Pune          | 0205-06-06    | Annual          |      1000 |                 3 |           NULL |
+|         3 | Ankita korade | Mumbai        | 2025-02-12    | Monthly         |      2000 |                 6 |          10.00 |
+|         4 | sakshi Gore   | Pune          | 2025-12-12    | Weekly          |      3000 |                 7 |          20.00 |
+|         5 | Radha Korade  | Delhi         | 2025-04-13    | Annual          |      4000 |                 8 |          30.00 |
+|         6 | Rutuja Dighe  | Pune          | 2025-11-11    | Lifetime        |     50000 |                 9 |          40.00 |
+|         7 | Sonali Khose  | Mumbai        | 0205-11-11    | Annual          |     60000 |                18 |          70.00 |
++-----------+---------------+---------------+---------------+-----------------+-----------+-------------------+----------------+
+7 rows in set (0.00 sec)
+
+
+Q.11
+
+    mysql> alter table member
+    -> modify column member_name
+    -> varchar(20);
+Query OK, 7 rows affected (0.12 sec)
+Records: 7  Duplicates: 0  Warnings: 0
+
+mysql> select * from member;
++-----------+---------------+---------------+---------------+-----------------+-----------+-------------------+----------------+
+| member_id | member_name   | member_adress | acc_open_date | membership_type | fees_paid | max_books_allowed | penalty_amount |
++-----------+---------------+---------------+---------------+-----------------+-----------+-------------------+----------------+
+|         1 | Richa         | Pune          | 2005-12-10    | Lifetime        |     25000 |                 5 |          50.00 |
+|         2 | Garima Sen    | Pune          | 0205-06-06    | Annual          |      1000 |                 3 |           NULL |
+|         3 | Ankita korade | Mumbai        | 2025-02-12    | Monthly         |      2000 |                 6 |          10.00 |
+|         4 | sakshi Gore   | Pune          | 2025-12-12    | Weekly          |      3000 |                 7 |          20.00 |
+|         5 | Radha Korade  | Delhi         | 2025-04-13    | Annual          |      4000 |                 8 |          30.00 |
+|         6 | Rutuja Dighe  | Pune          | 2025-11-11    | Lifetime        |     50000 |                 9 |          40.00 |
+|         7 | Sonali Khose  | Mumbai        | 0205-11-11    | Annual          |     60000 |                18 |          70.00 |
++-----------+---------------+---------------+---------------+-----------------+-----------+-------------------+----------------+
+7 rows in set (0.00 sec)
+
+
+Q.12
+       ysql> insert into member(max_books_allowed)
+    -> values(110);
+ERROR 1364 (HY000): Field 'member_id' doesn't have a default value
+
+
+Q.13
+
+ysql> create table member_1(
+    -> member_id int,
+    -> member_name varchar(40),
+    -> member_adress varchar(40),
+    -> max_book_allowed int,
+    -> penalty_amount decimal);
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> desc member_1;
++------------------+---------------+------+-----+---------+-------+
+| Field            | Type          | Null | Key | Default | Extra |
++------------------+---------------+------+-----+---------+-------+
+| member_id        | int           | YES  |     | NULL    |       |
+| member_name      | varchar(40)   | YES  |     | NULL    |       |
+| member_adress    | varchar(40)   | YES  |     | NULL    |       |
+| max_book_allowed | int           | YES  |     | NULL    |       |
+| penalty_amount   | decimal(10,0) | YES  |     | NULL    |       |
++------------------+---------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+Q.14
+
+   mysql> alter table member_1
+    -> add constraint max_book_allowed check (max_book_allowed<100);
+Query OK, 0 rows affected (0.07 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+ysql> alter table member_1
+    -> add constraint penalty_amount check(penalty_amount<=1000);
+Query OK, 0 rows affected (0.07 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+
+Q.15
+
+mysql> drop table books;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc books;
+ERROR 1146 (42S02): Table 'library_system.books' doesn't exist
+
+Q.16
+
+     mysql> create table books(
+    -> Book_No int primary key,
+    -> Book_Name varchar(30) not null,
+    -> Category varchar(40));
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> desc books;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| Book_No   | int         | NO   | PRI | NULL    |       |
+| Book_Name | varchar(30) | NO   |     | NULL    |       |
+| Category  | varchar(40) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+ysql> insert into books values( 1,"Bhagavatgita","Spiritual"),(2,"Agnipankh","Motivational"),(3,"Operating system","System"),(4,"Fiction System","Fiction"),(5,"Relational Databse","Database"),(6,"Database Management System","RDBMS");
+Query OK, 6 rows affected (0.01 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+
+mysql> select * from books;
++---------+----------------------------+--------------+
+| Book_No | Book_Name                  | Category     |
++---------+----------------------------+--------------+
+|       1 | Bhagavatgita               | Spiritual    |
+|       2 | Agnipankh                  | Motivational |
+|       3 | Operating system           | System       |
+|       4 | Fiction System             | Fiction      |
+|       5 | Relational Databse         | Database     |
+|       6 | Database Management System | RDBMS        |
++---------+----------------------------+--------------+
+6 rows in set (0.00 sec)
+
+Q.17
+
+    
+
+
+
+

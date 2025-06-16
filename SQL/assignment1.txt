@@ -1,0 +1,200 @@
+                      Assignment No.1
+
+Q.1
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| capgemini          |
+| college            |
+| hotelmanagement    |
+| information_schema |
+| marchfebmerged     |
+| mysql              |
+| performance_schema |
+| sys                |
+| temp1              |
+| worker             |
++--------------------+
+10 rows in set (0.01 sec)
+mysql> use college;
+Database changed
+
+Q.2
+    mysql> create table countries(
+    -> country_id int(11),
+    -> country_name varchar(20),
+    -> region_id int(11));
+Query OK, 0 rows affected, 2 warnings (0.06 sec)
+
+mysql> show tables;
++-------------------+
+| Tables_in_college |
++-------------------+
+| countries         |
+| student           |
++-------------------+
+2 rows in set (0.01 sec)
+
+mysql> desc countries;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| country_id   | int         | YES  |     | NULL    |       |
+| country_name | varchar(20) | YES  |     | NULL    |       |
+| region_id    | int         | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+Q.3 
+  mysql> create table jobs(
+    -> job_id int primary key,
+    -> job_title varchar(20) not null,
+    -> min_salary decimal(3,2),
+    -> max_salary decimal(5,2));
+    Query OK, 0 rows affected (0.03 sec)
+
+   mysql> desc jobs;
++------------+--------------+------+-----+---------+-------+
+| Field      | Type         | Null | Key | Default | Extra |
++------------+--------------+------+-----+---------+-------+
+| job_id     | int          | NO   | PRI | NULL    |       |
+| job_title  | varchar(20)  | NO   |     | NULL    |       |
+| min_salary | decimal(3,2) | YES  |     | NULL    |       |
+| max_salary | decimal(5,2) | YES  |     | NULL    |       |
++------------+--------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+
+Q.4
+     mysql> create table job_history(
+    -> employee_id int,
+    -> start_date Date,
+    -> end_date date,
+    -> job_id int,
+    -> department_id int);
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> desc job_history;
++---------------+------+------+-----+---------+-------+
+| Field         | Type | Null | Key | Default | Extra |
++---------------+------+------+-----+---------+-------+
+| employee_id   | int  | YES  |     | NULL    |       |
+| start_date    | date | YES  |     | NULL    |       |
+| end_date      | date | YES  |     | NULL    |       |
+| job_id        | int  | YES  |     | NULL    |       |
+| department_id | int  | YES  |     | NULL    |       |
++---------------+------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+Q.5
+    mysql> alter table countries
+    -> modify country_id int(11) unique;
+Query OK, 0 rows affected, 1 warning (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 1
+
+mysql> show create table countries;
++-----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Table     | Create Table                                                                                                                                                                                                                                       |
++-----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| countries | CREATE TABLE `countries` (
+  `country_id` int DEFAULT NULL,
+  `country_name` varchar(20) DEFAULT NULL,
+  `region_id` int DEFAULT NULL,
+  UNIQUE KEY `country_id` (`country_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
++-----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> desc countries;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| country_id   | int         | YES  | UNI | NULL    |       |
+| country_name | varchar(20) | YES  |     | NULL    |       |
+| region_id    | int         | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+Q.6
+    mysql> alter table jobs
+    -> modify job_title varchar(20) default '',
+    -> modify min_salary decimal(10,2) default 8000;
+Query OK, 0 rows affected (0.15 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table jobs
+    -> modify max_salary decimal(10,2) default null;
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc jobs;
++------------+---------------+------+-----+---------+-------+
+| Field      | Type          | Null | Key | Default | Extra |
++------------+---------------+------+-----+---------+-------+
+| job_id     | int           | NO   | PRI | NULL    |       |
+| job_title  | varchar(20)   | YES  |     |         |       |
+| min_salary | decimal(10,2) | YES  |     | 8000.00 |       |
+| max_salary | decimal(10,2) | YES  |     | NULL    |       |
++------------+---------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+Q.7
+    mysql> create table department(
+    -> department_id decimal(4,0) primary key,
+    -> department_name varchar(30),
+    -> manager_id decimal(6,0),
+    -> location_id decimal(4,0));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> desc department;
++-----------------+--------------+------+-----+---------+-------+
+| Field           | Type         | Null | Key | Default | Extra |
++-----------------+--------------+------+-----+---------+-------+
+| department_id   | decimal(4,0) | NO   | PRI | NULL    |       |
+| department_name | varchar(30)  | YES  |     | NULL    |       |
+| manager_id      | decimal(6,0) | YES  |     | NULL    |       |
+| location_id     | decimal(4,0) | YES  |     | NULL    |       |
++-----------------+--------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> alter table department
+    -> modify department_id decimal(4,0) default 0,
+    -> modify department_name varchar(30) not null;
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table department
+    -> add primary key(department_id,manager_id);
+Query OK, 0 rows affected (0.07 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc department;
++-----------------+--------------+------+-----+---------+-------+
+| Field           | Type         | Null | Key | Default | Extra |
++-----------------+--------------+------+-----+---------+-------+
+| department_id   | decimal(4,0) | NO   | PRI | 0       |       |
+| department_name | varchar(30)  | NO   |     | NULL    |       |
+| manager_id      | decimal(6,0) | NO   | PRI | 0       |       |
+| location_id     | decimal(4,0) | YES  |     | NULL    |       |
++-----------------+--------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+Q.8
+    mysql> create table employ(
+    -> employ_id int,
+    -> first_name varchar(30),
+    -> last_name varchar(50),
+    -> email varchar(50),
+    -> phone_number varchar(30),
+    -> hire_date date,
+    -> jo_id int,
+    -> salary decimal(10,2),
+    -> comission decimal(5,2),
+    -> department_id int);
+Query OK, 0 rows affected (0.03 sec)
+     
+
+
+    
+
