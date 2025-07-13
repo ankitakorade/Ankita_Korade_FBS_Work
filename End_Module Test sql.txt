@@ -1,0 +1,60 @@
+  -------------------End module Test-A----------------
+1.select emp_name,salary from employee
+  order by salary desc;
+
+2.select * from employee
+  order by salary desc
+  limit 5;
+
+3.select * from employee
+  limit 5 offset 3;
+
+4.select department,count(*)as employee_count
+ from employee
+ group by department;
+
+5.select department avg(salary)from the employee
+  group by department
+  having avg(salary)>50,000;
+
+6.select * from products
+  where product_name like '%laptop%'
+
+8.select * from student
+ where student_name like 'A%'
+
+8.select month(order_date)as order_month
+  count(*)as total_orders from orders
+  group by month(order_date)
+  having count(*)>100;
+
+9.select category,
+  sum(total_sales)
+  avg(average_sales)
+  from sales
+  group by category
+  having sum(sales_amount)>100000;
+
+10.The total number of employee
+
+11.The total number of employee
+
+12.eroor
+
+13.having
+
+14.Returns all rows from the left and matching rows from the right table
+
+15.HELLO WORLD
+
+16.select region,
+   sum(total_amount)as total_order_amount
+   from orders
+   group by region
+   having sum(total_amount)>10000;
+
+17.select author sum(quantity_sold)
+   from books
+   group by author
+   having sum(quantity_sold)>100;
+
